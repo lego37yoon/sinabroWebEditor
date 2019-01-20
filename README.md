@@ -1,6 +1,7 @@
 Sinabro Web Editor
 ==
 [NOTICE] THIS FORK VERSION OF XQUARD WILL START DEVELOPMENT AFTER NOVEMBER, 2019
+
 Sinabro Web Editor is a Javascript based, HTML5 complaint, easily extensible
 editor module aim to support major modern web browsers.
 

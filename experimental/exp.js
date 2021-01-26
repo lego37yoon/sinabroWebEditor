@@ -85,19 +85,16 @@ if(!Function.prototype.bindAsEventListener) {
 
 
 xq.Browser = {
-	isTrident: navigator.appName === "Microsoft Internet Explorer",
 	isWebkit: navigator.userAgent.indexOf('AppleWebKit/') > -1,
 	isGecko: navigator.userAgent.indexOf('Gecko') > -1 && navigator.userAgent.indexOf('KHTML') === -1,
+	isChrome: navigator.userAgent.indexOf('Chrome') > -1,
 	isKHTML: navigator.userAgent.indexOf('KHTML') !== -1,
-	isPresto: navigator.appName === "Opera",
 	
 	isMac: navigator.userAgent.indexOf("Macintosh") !== -1,
 	isUbuntu: navigator.userAgent.indexOf('Ubuntu') !== -1,
 	isWin: navigator.userAgent.indexOf('Windows') !== -1,
 	
 	isFF: navigator.userAgent.indexOf('Firefox') !== -1,
-	isFF2: navigator.userAgent.indexOf('Firefox/2') !== -1,
-	isFF3: navigator.userAgent.indexOf('Firefox/3') !== -1,
 	
 	isSafari: navigator.userAgent.indexOf('Safari') !== -1
 };

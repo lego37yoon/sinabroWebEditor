@@ -34,14 +34,7 @@ xq.validator.Base = xq.Class(/** @lends xq.validator.Base.prototype */{
 	validate: function(element, noValidation, dontClone) {
 		// DOM validation
 		if (!dontClone) {
-			if (xq.Browser.isTrident){
-				// IE CloneNode Problem
-				var tempHtml = element.innerHTML;
-				element = document.createElement("DIV");
-				element.innerHTML = tempHtml;
-			} else {
-				element = element.cloneNode(true);
-			}
+			element = element.cloneNode(true);
 		}
 		
 		//element = dontClone ? element : element.cloneNode(true);
@@ -53,7 +46,6 @@ xq.validator.Base = xq.Class(/** @lends xq.validator.Base.prototype */{
 		var html = {value: element.innerHTML};
 		this._fireOnBeforeStringValidation(html);
 		if (noValidation) {
-			if (xq.Browser.isTrident) html.value = this.lowerTagNamesAndUniformizeQuotation(html.value);
 			html.value = this.validateSelfClosingTags(html.value);
 		} else {
 			html.value = this.validateString(html.value);
@@ -103,9 +95,7 @@ xq.validator.Base = xq.Class(/** @lends xq.validator.Base.prototype */{
 	invalidateStrikesAndUnderlines: function(element) {
 		var rdom = xq.rdom.Base.createInstance();
 		rdom.setRoot(element);
-
-		var nameOfClassName = xq.Browser.isTrident ? "className" : "class";
-		
+        
 		var underlines = xq.getElementsByClassName(rdom.getRoot(), "underline", "em");
 		var pUnderline = xq.compilePattern("(^|\\s)underline($|\\s)");
 		var lenOfUnderlines = underlines.length;
@@ -249,8 +239,6 @@ xq.validator.Base = xq.Class(/** @lends xq.validator.Base.prototype */{
 			if(!allowedAttrs) return '';
 			
 			if(attrs) {
-				if(xq.Browser.isTrident) attrs = attrs.replace(p1, '$1$2="$2"$3');
-				
 				var sb = [];
 				var m = attrs.match(p2);
 				for(var i = 0; i < m.length; i++) {

@@ -94,11 +94,6 @@ xq.Browser = {
 	isMac: navigator.userAgent.indexOf("Macintosh") !== -1,
 	isUbuntu: navigator.userAgent.indexOf('Ubuntu') !== -1,
 	isWin: navigator.userAgent.indexOf('Windows') !== -1,
-
-	isIE: navigator.appName === "Microsoft Internet Explorer",
-	isIE6: navigator.userAgent.indexOf('MSIE 6') !== -1,
-	isIE7: navigator.userAgent.indexOf('MSIE 7') !== -1,
-	isIE8: navigator.userAgent.indexOf('MSIE 8') !== -1,
 	
 	isFF: navigator.userAgent.indexOf('Firefox') !== -1,
 	isFF2: navigator.userAgent.indexOf('Firefox/2') !== -1,
@@ -140,44 +135,16 @@ xq.HostEnvironment = Class.extend({
 });
 
 xq.HostEnvironment.getInstance = function(iframe) {
-	if(xq.Browser.isIE) {
-		return new xq.TridentHostEnvironment(iframe);
-	} else {
-		return new xq.W3HostEnvironment(iframe);
-	}
+    return new xq.W3HostEnvironment(iframe);
 }
-
-xq.TridentHostEnvironment = xq.HostEnvironment.extend({
-	generateCleanDocumentHtml: function() {
-		var sb = [];
-		sb.push('<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko">');
-		sb.push('<head>');
-		sb.push('<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />');
-		sb.push('</head>');
-		sb.push('<body></body>');
-		sb.push('</html>');
-		return sb.join('');
-	},
-	turnOnDesignMode: function() {
-		this.getDoc().body.contentEditable = true;
-	},
-	attachEvent: function(element, eventName, handler) {
-		element.attachEvent('on' + eventName, handler);
-		element = null;
-	},
-	detachEvent: function(element, eventName, handler) {
-		element.detachEvent('on' + eventName, handler);
-		element = null;
-	}
-});
 
 xq.W3HostEnvironment = xq.HostEnvironment.extend({
 	generateCleanDocumentHtml: function() {
 		var sb = [];
-		sb.push('<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">');
-		sb.push('<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko">');
+		sb.push('<!DOCTYPE html>');
+		sb.push('<html lang="ko">');
 		sb.push('<head>');
-		sb.push('<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />');
+		sb.push('<meta charset="utf-8">');
 		sb.push('</head>');
 		sb.push('<body></body>');
 		sb.push('</html>');

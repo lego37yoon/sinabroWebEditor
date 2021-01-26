@@ -8,8 +8,8 @@ if(!window.xq) {
 	var xq = {};
 }
 
-xq.majorVersion = '0.82';
-xq.minorVersion = '20090423';
+xq.majorVersion = '0.01';
+xq.minorVersion = '20210126';
 
 /**
  * Compiles regular expression pattern if possible.
@@ -671,13 +671,11 @@ xq.getXquaredScriptFileNames = function() {
 		'rdom/W3.js',
 		'rdom/Gecko.js',
 		'rdom/Webkit.js',
-		'rdom/Trident.js',
 		'rdom/Factory.js',
 		'validator/Base.js',
 		'validator/W3.js',
 		'validator/Gecko.js',
 		'validator/Webkit.js',
-		'validator/Trident.js',
 		'validator/Factory.js',
 		'macro/Base.js',
 		'macro/Factory.js',
